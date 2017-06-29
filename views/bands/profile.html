@@ -5,20 +5,35 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Band Profile</title>
-    <link rel="stylesheet" href="">
-    <script src="/js/jquery.js"></script>
-    <script src="/js/script.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/script.js"></script>
 </head>
 
 <body>
-    <main>
-        <section>
-            Welcome to your profile, {{band.name}}
-            <div>
-                <a href="/bands/logout">Logout</a>
-            </div>
-        </section>
-    </main>
+    <div class="welcome">
+        <h1>Welcome to your profile, {{bandInfo.band.name}}</h1>
+    </div>
+    <div class="tour_dates">
+        <div class="tour tourHeader">
+            <div class="date">Date</div>
+            <div class="location">Location</div>
+            <div class="venue">Venue</div>
+            <div class="explore">More Info</div>
+        </div>
+        {{#bandInfo.tour}}
+        <div class="tour tourDate">
+            <div class="date">{{tour_date}}</div>
+            <div class="location">{{city}}, {{state}}</div>
+            <div class="venue">{{name}}</div>
+            <div class="explore"><a href="/venues/{{id}}">Explore</a></div>
+        </div>
+        {{/bandInfo.tour}}
+    </div>
+    <a href="../dates/new">Add Tour Date</button>
+        <div class="logout">
+            <a href="/bands/logout">Logout</a>
+    </div>
 </body>
 
 </html>

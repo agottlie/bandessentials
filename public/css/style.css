@@ -1,0 +1,9 @@
+.tour {
+	display: flex;
+	flex-direction: row;
+}
+
+.tour>div {
+	margin: 20px;
+	width: 100px;
+}

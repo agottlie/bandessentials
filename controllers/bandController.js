@@ -1,4 +1,5 @@
 const Band = require('../models/bands');
+const Tour = require('../models/tours');
 const router = require('express').Router();
 const passport = require('passport');
 
@@ -32,18 +33,19 @@ router.post('/login', passport.authenticate(
 ));
 
 router.get('/profile', auth.restrict, (req, res) => {
-        console.log('in handler for bands/profile');
-        console.log('req.band:');
-        console.log(req.user.name);
-        Band
-            .findByName(req.user.name)
-            .then((band) => {
-                res.render(
-                    'bands/profile', { band: band }
-                );
-            })
-            .catch(err => console.log('ERROR:', err));
-    }
-);
+    const bandInfo = {};
+    Band
+        .findByName(req.user.name)
+        .then((band) => {
+            bandInfo.band = band;
+            return Tour.findTour(band)
+        })
+        .then((tour) => {
+            bandInfo.tour = tour;
+            console.log(tour);
+            res.render('bands/profile', { bandInfo });
+        })
+        .catch(err => console.log('ERROR:', err));
+});
 
 module.exports = router;

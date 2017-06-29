@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/bands', require('./controllers/bandController'));
-// app.use('/venues', require('./controllers/venueController'));
+app.use('/dates', require('./controllers/dateController'));
 // app.use('/restaurants', require('./controllers/restaurantController'));
 
 app.get('/', (req, res) => {
