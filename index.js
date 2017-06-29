@@ -36,7 +36,7 @@ app.use(cookieParser());
 
 app.use('/bands', require('./controllers/bandController'));
 app.use('/dates', require('./controllers/dateController'));
-// app.use('/restaurants', require('./controllers/restaurantController'));
+app.use('/venues', require('./controllers/venueController'));
 
 app.get('/', (req, res) => {
     res.render('index');

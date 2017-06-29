@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Add New Date</title>
+    <title>Edit Date</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
     <script src="https://unpkg.com/flatpickr"></script>
@@ -13,17 +13,17 @@
 
 <body>
     <div class="containr">
-        <h1>Add a new tour date:</h1>
-        <form class="new-date-form">
+        <h1>Edit tour date:</h1>
+        <form class="edit-date-form">
             <label>Date:</label>
-            <input class="tour-date-input" />
+            <input class="tour-date-edit" placeholder="{{tour.tour_date}}" />
             <label>City:</label>
-            <input class="tour-city-input">
+            <input class="tour-city-edit" placeholder="{{venue.city}}" />
             <label>State:</label>
-            <input class="tour-state-input" maxlength="2">
+            <input class="tour-state-edit" placeholder="{{venue.state}}" maxlength="2" />
             <label>Venue:</label>
-            <input class="tour-venue-input" />
-            <button type="submit">Submit</button>
+            <input class="tour-venue-edit" placeholder="{{venue.name}}" />
+            <button type="submit" class="submit" data-id="{{tour.id}}">Submit</button>
         </form>
     </div>
 </body>

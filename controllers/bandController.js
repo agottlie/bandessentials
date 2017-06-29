@@ -42,7 +42,7 @@ router.get('/profile', auth.restrict, (req, res) => {
         })
         .then((tour) => {
             bandInfo.tour = tour;
-            console.log(tour);
+            console.log(bandInfo.tour);
             res.render('bands/profile', { bandInfo });
         })
         .catch(err => console.log('ERROR:', err));
