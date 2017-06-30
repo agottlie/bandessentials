@@ -42,10 +42,24 @@ router.get('/profile', auth.restrict, (req, res) => {
         })
         .then((tour) => {
             bandInfo.tour = tour;
-            console.log(bandInfo.tour);
             res.render('bands/profile', { bandInfo });
         })
         .catch(err => console.log('ERROR:', err));
+});
+
+router.get('/edit', auth.restrict, (req, res) => {
+    console.log(req.user);
+    res.render('bands/edit', { user: req.user });
+});
+
+router.put('/edit/', (req, res) => {
+    const name = req.body.name,
+        id = req.body.id;
+
+    Band
+        .update(name, id)
+        .then(data => res.json(data))
+        .catch(err => console.log('ERROR: ', err));
 });
 
 module.exports = router;

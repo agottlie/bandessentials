@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Change Band Name</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+    <script src="https://unpkg.com/flatpickr"></script>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Edit band info:</h1>
+        <form class="edit-band-form">
+            <label>Name:</label>
+            <input class="band-name-edit" placeholder="{{user.name}}" />
+            <button type="submit" class="submit" data-id="{{user.id}}">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

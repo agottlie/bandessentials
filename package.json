@@ -17,7 +17,8 @@
     "mustache-express": "^1.2.5",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "pg-promise": "^6.1.2"
+    "pg-promise": "^6.1.2",
+    "util": "^0.10.3"
   },
   "devDependencies": {},
   "scripts": {

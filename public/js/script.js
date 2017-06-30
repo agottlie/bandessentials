@@ -12,7 +12,6 @@ $(() => {
             city = $('.tour-city-input').val(),
             state = $('.tour-state-input').val();
 
-
         const newDate = {
             date: date,
             name: name,
@@ -21,12 +20,12 @@ $(() => {
         };
 
         $.ajax({
-            method: 'POST',
-            url: '/dates/',
+            method: 'PUT',
+            url: '/dates/search',
             data: newDate,
-            success: response => {
-                window.location.replace('/bands/profile')
-            },
+            // success: response => {
+            //     window.location.replace('/dates/new')
+            // },
             error: msg => {
                 console.log(msg);
             }
@@ -42,15 +41,12 @@ $(() => {
             state = $('.tour-state-edit').val(),
             date_id = $('.submit').attr('data-id');
 
-
-        console.log("DATE ID IS " + date_id);
-
         const updatedDate = {
             date: date,
             name: name,
             city: city,
             state: state,
-            date_id: date_id,
+            date_id: date_id
         };
 
         $.ajax({
@@ -65,4 +61,46 @@ $(() => {
             }
         });
     });
+
+    $('.deleteTour').on('click', (e) => {
+        e.preventDefault();
+
+        const id = $(e.target).data('id');
+
+        $.ajax({
+            method: 'DELETE',
+            url: `/dates/${id}`,
+            success: response => {
+                window.location.reload();
+            },
+            error: msg => {
+                console.log(msg);
+            }
+        });
+    })
+
+    $('.edit-band-form').on('submit', (e) => {
+        e.preventDefault();
+
+        const name = $('.band-name-edit').val(),
+            id = $('.submit').data('id');
+
+        const updatedName = {
+            name: name,
+            id: id
+        };
+
+        $.ajax({
+            method: 'PUT',
+            url: '/bands/edit/',
+            data: updatedName,
+            success: response => {
+                window.location.replace('/bands/profile')
+            },
+            error: msg => {
+                console.log(msg);
+            }
+        });
+    });
+
 });

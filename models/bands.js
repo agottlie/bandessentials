@@ -16,5 +16,11 @@ function findByName(name) {
     return db.oneOrNone(`SELECT * FROM bands WHERE name = $1;`, [name]);
 };
 
+function update(name, id) {
+    return db.one(`UPDATE bands SET name=$1 WHERE id=$2 RETURNING *`, [name, id]);
+}
 
-module.exports = { create, findByName };
+
+
+module.exports = { create, findByName, update };
+

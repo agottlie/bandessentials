@@ -1,9 +1,11 @@
 const Venue = require('../models/venues');
+const VenueAPI = require('../services/venues')
 const Tour = require('../models/tours');
 const Band = require('../models/bands');
 const router = require('express').Router();
 const passport = require('passport');
 const auth = require('../services/auth');
+const util = require('util');
 
 router.get('/new', auth.restrict, (req, res) => {
     res.render('dates/new', { id: req.user.id });
@@ -21,11 +23,26 @@ router.get('/edit/:id', auth.restrict, (req, res) => {
         })
         .then((data) => {
             tour.venue = data;
-            console.log("TOUR OBJECT" + tour.tour.id);
             res.render('dates/edit', { band_id: req.user.id, tour: tour.tour, venue: tour.venue });
 
         });
 });
+
+// router.get('/search', auth.restrict, (req,res) {
+
+// })
+
+router.put('/search', auth.restrict, (req, res) => {
+    const query = req.body.name + "+" + req.body.city + "+" + req.body.state,
+        id = req.user.id;
+
+    VenueAPI
+        .getVenue(query)
+        .then((data) => {
+            console.log(util.inspect(data, false, null));
+            res.render('dates/search', { data, id });
+        })
+})
 
 router.post('/', (req, res) => {
     const band_id = req.user.id,
@@ -51,8 +68,6 @@ router.put('/edit/:id', (req, res) => {
         state = req.body.state,
         date_id = req.body.date_id;
 
-        console.log("date id is " + date_id);
-
 
     Venue
         .create(name, city, state)
@@ -62,5 +77,16 @@ router.put('/edit/:id', (req, res) => {
         .then(data => res.json(data))
         .catch(err => console.log('ERROR: ', err));
 });
+
+router.delete('/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+
+    Tour
+        .destroy(id)
+        .then((data) => {
+            res.json(data);
+        })
+        .catch(err => console.log('ERROR: ', err));
+})
 
 module.exports = router;

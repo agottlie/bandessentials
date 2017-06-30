@@ -17,7 +17,7 @@
         <h1>Welcome to your profile, {{bandInfo.band.name}}</h1>
     </div>
     <div class="tour_dates">
-        <div class="container header">
+        <div class="rowContainer header">
             <div class="date">Date</div>
             <div class="location">Location</div>
             <div class="venue">Venue</div>
@@ -26,19 +26,22 @@
             <div class="delete">Delete Date</div>
         </div>
         {{#bandInfo.tour}}
-        <div class="container tourDate">
+        <div class="rowContainer tourDate">
             <div class="date">{{tour_date}}</div>
             <div class="location">{{city}}, {{state}}</div>
             <div class="venue">{{name}}</div>
             <div class="explore"><a href="/venues/{{venue_id}}">Explore</a></div>
-            <div class="edit"><a href="/dates/edit/{{id}}">Edit Tour Dates</a></div>
-            <div class="delete"><a href="/dates/delete/{{id}}">Delete Tour Date</a></div>
+            <div class="edit"><a href="/dates/edit/{{id}}">Edit</a></div>
+            <div class="delete"><a class="deleteTour" href="/dates/{{id}}" data-id="{{id}}">Delete</a></div>
         </div>
         {{/bandInfo.tour}}
     </div>
-    <a href="../dates/new">Add Tour Date</button>
-        <div class="logout">
-            <a href="/bands/logout">Logout</a>
+    <a href="../dates/new">Add Tour Date</a>
+    <div class="edit">
+        <a href="/bands/edit">Change Band Name</a>
+    </div>
+    <div class="logout">
+        <a href="/bands/logout">Logout</a>
     </div>
 </body>
 

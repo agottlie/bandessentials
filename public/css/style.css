@@ -1,9 +1,9 @@
-.container {
+.rowContainer, .results {
 	display: flex;
 	flex-direction: row;
 }
 
-.container>div {
+.rowContainer>div, .results>div {
 	margin: 20px;
 	width: 100px;
 }
