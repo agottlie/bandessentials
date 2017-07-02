@@ -14,20 +14,39 @@
         <h1>Hi</h1>
     </div>
     <div class="rowContainer header">
-        <div class="breakfast">Breakfast</div>
-        <div class="lunch">Lunch</div>
-        <div class="dinner">Dinner</div>
-        <div class="snacks">Late Night Snacks</div>
+        <div class="breakfast">
+            <h1>Breakfast</h1> {{#venueRestaurants.breakfast.data.results}}
+            <div class="rowContainer venue">
+                <div class="name">{{name}}</div>
+                <div class="address">{{formatted_address}}</div>
+            </div>
+            {{/venueRestaurants.breakfast.data.results}}
+        </div>
+        <div class="lunch">
+            <h1>Dinner</h1> {{#venueRestaurants.lunch.data.results}}
+            <div class="rowContainer venue">
+                <div class="name">{{name}}</div>
+                <div class="address">{{formatted_address}}</div>
+            </div>
+            {{/venueRestaurants.lunch.data.results}}
+        </div>
+        <div class="dinner">
+            <h1>Dinner</h1> {{#venueRestaurants.dinner.data.results}}
+            <div class="rowContainer venue">
+                <div class="name">{{name}}</div>
+                <div class="address">{{formatted_address}}</div>
+            </div>
+            {{/venueRestaurants.dinner.data.results}}
+        </div>
+        <div class="snacks">
+            <h1>Late Night Snacks</h1> {{#venueRestaurants.snacks.data.results}}
+            <div class="rowContainer venue">
+                <div class="name">{{name}}</div>
+                <div class="address">{{formatted_address}}</div>
+            </div>
+            {{/venueRestaurants.snacks.data.results}}
+        </div>
     </div>
-
-	<!-- {{#restaurant}}
-    <div class="container meals">
-    	<div class="breakfast">{{breakfast}}</div>
-        <div class="lunch">{{lunch}}</div>
-        <div class="dinner">{{dinner}}</div>
-        <div class="snacks">{{snacks}}</div>
-    </div>
-    {{/restaurant}} -->
 
     <a href="/bands/profile">Back to Tour Dates</a>
 </body>

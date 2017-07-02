@@ -4,6 +4,26 @@ $(() => {
     flatpickr(".tour-date-input", { altInput: true, minDate: "today" });
     flatpickr(".tour-date-edit", { altInput: true, minDate: "today" });
 
+    //Date display solution sourced from here: https://www.w3schools.com/jsref/jsref_getmonth.asp
+    let month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+
+    for (i = 0; i < $('.date').length; i++) {
+        let date = new Date($('.date').eq(i).text());
+        $('.date').eq(i).text(month[date.getMonth()] + " " + date.getDate());
+    }
+
 
     //TAKE INPUTS FROM NEW TOUR DATE PAGE AND GO TO SEARCH
     $('.new-date-form').on('submit', (e) => {
