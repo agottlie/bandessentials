@@ -1,7 +1,7 @@
 const db = require('../models/setup');
 
-function create(name, city, state) {
-	const queryPromise = db.one(`INSERT INTO venues (name, city, state) VALUES ($1,$2,$3) RETURNING id`, [name, city, state]);
+function create(name, address, lat, lng) {
+	const queryPromise = db.one(`INSERT INTO venues (name, address, lat, lng) VALUES ($1,$2,$3,$4) RETURNING id`, [name, address, lat, lng]);
 	return queryPromise;
 }
 

@@ -1,60 +1,25 @@
 $(() => {
     console.log('js connected!');
 
-    flatpickr(".tour-date-input", { altInput: true });
-    flatpickr(".tour-date-edit", { altInput: true });
+    flatpickr(".tour-date-input", { altInput: true, minDate: "today" });
+    flatpickr(".tour-date-edit", { altInput: true, minDate: "today" });
 
+
+    //TAKE INPUTS FROM NEW TOUR DATE PAGE AND GO TO SEARCH
     $('.new-date-form').on('submit', (e) => {
         e.preventDefault();
 
         const date = $('.tour-date-input').val(),
             name = $('.tour-venue-input').val(),
             city = $('.tour-city-input').val(),
-            state = $('.tour-state-input').val();
-
-        const newDate = {
-            date: date,
-            name: name,
-            city: city,
-            state: state
-        };
+            state = $('.tour-state-input').val(),
+            id = null;
 
         $.ajax({
-            method: 'PUT',
-            url: '/dates/search',
-            data: newDate,
-            // success: response => {
-            //     window.location.replace('/dates/new')
-            // },
-            error: msg => {
-                console.log(msg);
-            }
-        });
-    });
-
-    $('.edit-date-form').on('submit', (e) => {
-        e.preventDefault();
-
-        const date = $('.tour-date-edit').val(),
-            name = $('.tour-venue-edit').val(),
-            city = $('.tour-city-edit').val(),
-            state = $('.tour-state-edit').val(),
-            date_id = $('.submit').attr('data-id');
-
-        const updatedDate = {
-            date: date,
-            name: name,
-            city: city,
-            state: state,
-            date_id: date_id
-        };
-
-        $.ajax({
-            method: 'PUT',
-            url: '/dates/edit/:id',
-            data: updatedDate,
+            method: 'GET',
+            url: `/dates/search/${date}/${name}/${city}/${state}/${id}`,
             success: response => {
-                window.location.replace('/bands/profile')
+                window.location.replace('/dates/search')
             },
             error: msg => {
                 console.log(msg);
@@ -62,6 +27,30 @@ $(() => {
         });
     });
 
+    //UPDATE TOUR DATE
+    $('.edit-date-form').on('submit', (e) => {
+        e.preventDefault();
+
+        const date = $('.tour-date-edit').val(),
+            name = $('.tour-venue-edit').val(),
+            city = $('.tour-city-edit').val(),
+            state = $('.tour-state-edit').val(),
+            id = $('.search').data('id');
+
+        $.ajax({
+            method: 'GET',
+            url: `/dates/search/${date}/${name}/${city}/${state}/${id}`,
+            success: response => {
+                window.location.replace('/dates/search')
+            },
+            error: msg => {
+                console.log(msg);
+            }
+        });
+    });
+
+
+    //DELETE TOUR DATE
     $('.deleteTour').on('click', (e) => {
         e.preventDefault();
 
@@ -79,6 +68,7 @@ $(() => {
         });
     })
 
+    //EDIT BAND NAME
     $('.edit-band-form').on('submit', (e) => {
         e.preventDefault();
 
@@ -102,5 +92,60 @@ $(() => {
             }
         });
     });
+
+
+    //ADD NEW TOUR DATE
+    $('.select').on('click', (e) => {
+        e.preventDefault();
+
+        const name = $(e.target).data('name'),
+            address = $(e.target).data('address'),
+            lat = $(e.target).data('lat'),
+            lng = $(e.target).data('lng'),
+            place_id = $(e.target).data('id'),
+            date = $('#date').data('date'),
+            date_id = parseInt($('#date').data('date_id'));
+
+        const newDate = {
+            name: name,
+            address: address,
+            lat: lat,
+            lng: lng,
+            place_id: place_id,
+            date: date,
+            date_id: date_id
+        }
+
+        console.log(date_id);
+        console.log(typeof(date_id));
+
+        if (date_id > 0) {
+            console.log("RIGHT PATH");
+            $.ajax({
+                method: 'PUT',
+                url: '/dates/',
+                data: newDate,
+                success: response => {
+                    window.location.replace('/bands/profile')
+                },
+                error: msg => {
+                    console.log(msg);
+                }
+            });
+
+        } else {
+            $.ajax({
+                method: 'POST',
+                url: '/dates/',
+                data: newDate,
+                success: response => {
+                    window.location.replace('/bands/profile')
+                },
+                error: msg => {
+                    console.log(msg);
+                }
+            });
+        }
+    })
 
 });

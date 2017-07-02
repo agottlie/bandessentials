@@ -12,18 +12,19 @@
 </head>
 
 <body>
-    <div class="containr">
+    <div class="container">
+        <a href="../../bands/profile/">Back to Profile</a>
         <h1>Edit tour date:</h1>
         <form class="edit-date-form">
             <label>Date:</label>
             <input class="tour-date-edit" placeholder="{{tour.tour_date}}" />
             <label>City:</label>
-            <input class="tour-city-edit" placeholder="{{venue.city}}" />
+            <input class="tour-city-edit" />
             <label>State:</label>
-            <input class="tour-state-edit" placeholder="{{venue.state}}" maxlength="2" />
+            <input class="tour-state-edit" maxlength="2" />
             <label>Venue:</label>
             <input class="tour-venue-edit" placeholder="{{venue.name}}" />
-            <button type="submit" class="submit" data-id="{{tour.id}}">Submit</button>
+            <button type="submit" class='search' data-id="{{tour.id}}">Search</button>
         </form>
     </div>
 </body>

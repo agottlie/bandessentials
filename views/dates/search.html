@@ -12,24 +12,20 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Add a new tour date:</h1>
-        <form class="new-date-form">
-            <label>Date:</label>
-            <input class="tour-date-input" />
-            <label>City:</label>
-            <input class="tour-city-input">
-            <label>State:</label>
-            <input class="tour-state-input" maxlength="2">
-            <label>Venue:</label>
-            <input class="tour-venue-input" />
-            <button type="submit">Search</button>
-        </form>
-        
-        <div class="results">
-           
-        </div>
+    <a href="../dates/{{link}}">Search Again</a>
+    <h1 id='date' data-date="{{date}}" data-date_id={{date_id}}>Results for {{date}}</h1>
+    <div class="rowContainer header">
+        <div class="name">Name</div>
+        <div class="address">Address</div>
+        <div class="select">Add</div>
     </div>
+    {{#data.data.results}}
+    <div class="rowContainer venue">
+        <div class="name">{{name}}</div>
+        <div class="address">{{formatted_address}}</div>
+        <button class="select" data-lat="{{geometry.location.lat}}" data-lng="{{geometry.location.lng}}" data-id="{{id}}" data-name="{{name}}" data-address="{{formatted_address}}">Add to Tour Dates</button>
+    </div>
+    {{/data.data.results}}
 </body>
 
 </html>

@@ -6,8 +6,7 @@ DROP TABLE IF EXISTS tours CASCADE;
 CREATE TABLE restaurants (
 	id SERIAL PRIMARY KEY,
 	food_type VARCHAR(255),
-	city VARCHAR(255),
-	state VARCHAR(2),
+	address VARCHAR(255),
 	lat FLOAT(53),
 	long FLOAT(53),
 	rating VARCHAR(255)
@@ -16,10 +15,9 @@ CREATE TABLE restaurants (
 CREATE TABLE venues (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255),
-	city VARCHAR(255),
-	state VARCHAR(2),
+	address VARCHAR(255),
 	lat FLOAT(53),
-	long FLOAT(53),
+	lng FLOAT(53),
 	food_type VARCHAR(255),
 	restaurant_id INTEGER REFERENCES restaurants
 );

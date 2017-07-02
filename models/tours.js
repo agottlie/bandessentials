@@ -1,7 +1,7 @@
 const db = require('../models/setup');
 
 function findTour(band) {
-    return db.query(`SELECT tours.id, tour_date, venues.name, venues.city, venues.state, venues.id AS venue_id FROM tours, venues WHERE tours.band_id=$1 AND tours.venue_id = venues.id ORDER BY tour_date`, [band.id]);
+    return db.query(`SELECT tours.id, tour_date, venues.name, venues.address, venues.id AS venue_id FROM tours, venues WHERE tours.band_id=$1 AND tours.venue_id = venues.id ORDER BY tour_date`, [band.id]);
 }
 
 function findDate(id) {

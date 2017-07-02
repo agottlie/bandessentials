@@ -28,7 +28,7 @@
         {{#bandInfo.tour}}
         <div class="rowContainer tourDate">
             <div class="date">{{tour_date}}</div>
-            <div class="location">{{city}}, {{state}}</div>
+            <div class="location">{{address}}</div>
             <div class="venue">{{name}}</div>
             <div class="explore"><a href="/venues/{{venue_id}}">Explore</a></div>
             <div class="edit"><a href="/dates/edit/{{id}}">Edit</a></div>
@@ -36,7 +36,7 @@
         </div>
         {{/bandInfo.tour}}
     </div>
-    <a href="../dates/new">Add Tour Date</a>
+    <a href="/dates/new">Add Tour Date</a>
     <div class="edit">
         <a href="/bands/edit">Change Band Name</a>
     </div>
