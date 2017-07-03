@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const giphy = require('giphy-api')();
 
 const db = require('../models/setup');
 
@@ -20,7 +21,10 @@ function update(name, id) {
     return db.one(`UPDATE bands SET name=$1 WHERE id=$2 RETURNING *`, [name, id]);
 }
 
+function getGif() {
+    return giphy.random({ tag: 'tour life' });
+}
 
 
-module.exports = { create, findByName, update };
 
+module.exports = { create, findByName, update, getGif };

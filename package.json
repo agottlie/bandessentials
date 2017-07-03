@@ -13,6 +13,8 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "flatpickr": "^3.0.6",
+    "giphy": "0.0.4",
+    "giphy-api": "^1.2.6",
     "morgan": "^1.8.2",
     "mustache-express": "^1.2.5",
     "passport": "^0.3.2",

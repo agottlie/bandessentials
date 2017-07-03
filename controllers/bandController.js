@@ -3,6 +3,7 @@ const Tour = require('../models/tours');
 const router = require('express').Router();
 const passport = require('passport');
 
+
 const auth = require('../services/auth');
 
 router.post('/', passport.authenticate(
@@ -34,6 +35,7 @@ router.post('/login', passport.authenticate(
 
 router.get('/profile', auth.restrict, (req, res) => {
     const bandInfo = {};
+
     Band
         .findByName(req.user.name)
         .then((band) => {
@@ -42,6 +44,11 @@ router.get('/profile', auth.restrict, (req, res) => {
         })
         .then((tour) => {
             bandInfo.tour = tour;
+            return Band.getGif()
+        })
+        .then((gif) => {
+            console.log(gif);
+            bandInfo.gif = gif.data.image_url;
             res.render('bands/profile', { bandInfo });
         })
         .catch(err => console.log('ERROR:', err));
