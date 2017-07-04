@@ -1,9 +1,91 @@
-.rowContainer, .results {
-	display: flex;
-	flex-direction: row;
+body {
+    font-family: 'Metal Mania', cursive;
+    margin: 0;
+    background-color: ghostwhite;
 }
 
-.rowContainer>div, .results>div {
-	margin: 20px;
-	width: 200px;
+.rowContainer,
+.results {
+    display: flex;
+    flex-direction: row;
+}
+
+.rowContainer>div,
+.results>div {
+    margin: 20px;
+    width: 100%;
+}
+
+.header {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.tourDate, .venue {
+    border: 1px solid black;
+    margin: -1px 0;
+}
+
+#title {
+    text-decoration: underline;
+}
+
+.tour_dates {
+    margin-bottom: 20px;
+}
+
+.gif {
+    position: relative;
+    float: right;
+    right: 30px;
+}
+
+ul {
+    list-style: none;
+    margin: -10px 0 10px 0;
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+}
+
+a {
+    color: red;
+}
+
+li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.editHeader {
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+}
+
+.backButton {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.again {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.restaurant {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: -1px 0;
+}
+
+.restaurant>div {
+    margin: 5px;
+    width: 95%;
 }

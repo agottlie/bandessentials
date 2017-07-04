@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Add New Date</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="shortcut icon" href="../../images/guitar.png" />
+    <link rel="stylesheet" href="../../css/menu.css">
     <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
     <script src="https://unpkg.com/flatpickr"></script>
     <script src="../../js/jquery.js"></script>
     <script src="../../js/script.js"></script>
@@ -13,19 +15,21 @@
 
 <body>
     <div class="container">
-        <a href="../../bands/profile">Back to Profile</a>
-        <h1>Add a new tour date:</h1>
+        <div>
+            <h1 class="title">Add a New Tour Date</h1>
+        </div>
         <form class="new-date-form">
             <label>Date:</label>
-            <input class="tour-date-input" />
+            <input class="tour-date-input input" />
             <label>City:</label>
-            <input class="tour-city-input">
+            <input class="tour-city-input input">
             <label>State:</label>
-            <input class="tour-state-input" maxlength="2">
+            <input class="tour-state-input input" maxlength="2">
             <label>Venue:</label>
-            <input class="tour-venue-input" />
-            <button type="submit">Search</button>
+            <input class="tour-venue-input input" />
+            <button type="submit" class="submit button">Search</button>
         </form>
+        <a class="backButton" href="../../bands/profile">Back to Profile</a>
     </div>
 </body>
 

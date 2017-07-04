@@ -6,15 +6,18 @@
     <title>Add New Date</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+    <link rel="shortcut icon" href="../../images/guitar.png" />
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
     <script src="https://unpkg.com/flatpickr"></script>
     <script src="../../js/jquery.js"></script>
     <script src="../../js/script.js"></script>
 </head>
 
 <body>
-    <a href="../dates/{{link}}">Search Again</a>
-    <h1 id='date' data-date="{{date}}" data-date_id={{date_id}}>Results for <span class="date">{{date}}</span></h1>
-    <div class="rowContainer header">
+    <div>
+        <h1 id='date' class="title header" data-date="{{date}}" data-date_id={{date_id}}>Results for <span class="date">{{date}}</span></h1>
+    </div>
+    <div class="rowContainer">
         <div class="name">Name</div>
         <div class="address">Address</div>
         <div class="select">Add</div>
@@ -23,9 +26,14 @@
     <div class="rowContainer venue">
         <div class="name">{{name}}</div>
         <div class="address">{{formatted_address}}</div>
-        <button class="select" data-lat="{{geometry.location.lat}}" data-lng="{{geometry.location.lng}}" data-id="{{id}}" data-name="{{name}}" data-address="{{formatted_address}}">Add to Tour Dates</button>
+        <div>
+            <button class="select button" data-lat="{{geometry.location.lat}}" data-lng="{{geometry.location.lng}}" data-id="{{id}}" data-name="{{name}}" data-address="{{formatted_address}}">Add</button>
+        </div>
     </div>
     {{/data.data.results}}
+    <div class="again">
+        <a class="backButton" href="../dates/{{link}}">Search Again</a>
+    </div>
 </body>
 
 </html>

@@ -22,7 +22,7 @@ function update(name, id) {
 }
 
 function getGif() {
-    return giphy.random({ tag: 'tour life' });
+    return giphy.random({ tag: 'Metalocalypse' });
 }
 
 

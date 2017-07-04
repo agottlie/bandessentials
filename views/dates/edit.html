@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Date</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="shortcut icon" href="../../images/guitar.png" />
+    <link rel="stylesheet" href="../../css/menu.css">
     <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
     <script src="https://unpkg.com/flatpickr"></script>
     <script src="../../js/jquery.js"></script>
     <script src="../../js/script.js"></script>
@@ -13,19 +15,21 @@
 
 <body>
     <div class="container">
-        <a href="../../bands/profile/">Back to Profile</a>
-        <h1>Edit tour date:</h1>
+        <div>
+            <h1 class="title">Edit Tour Date</h1>
+        </div>
         <form class="edit-date-form">
             <label>Date:</label>
-            <input class="tour-date-edit" placeholder="{{tour.tour_date}}" />
+            <input class="tour-date-edit input" placeholder="{{tour.tour_date}}" />
             <label>City:</label>
-            <input class="tour-city-edit" />
+            <input class="tour-city-edit input" />
             <label>State:</label>
-            <input class="tour-state-edit" maxlength="2" />
+            <input class="tour-state-edit input" maxlength="2" />
             <label>Venue:</label>
-            <input class="tour-venue-edit" placeholder="{{venue.name}}" />
-            <button type="submit" class='search' data-id="{{tour.id}}">Search</button>
+            <input class="tour-venue-edit input" placeholder="{{venue.name}}" />
+            <button type="submit" class='search button' data-id="{{tour.id}}">Search</button>
         </form>
+        <a class="backButton" href="../../bands/profile/">Back to Profile</a>
     </div>
 </body>
 

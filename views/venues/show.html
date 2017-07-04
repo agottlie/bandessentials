@@ -3,55 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Hi</title>
+    <title>What to Eat</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+    <link rel="shortcut icon" href="../../images/guitar.png" />
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
+    <script src="https://unpkg.com/flatpickr"></script>
     <script src="../../js/jquery.js"></script>
     <script src="../../js/script.js"></script>
 </head>
 
 <body>
-    <div class="title">
-        <h1>Hi</h1>
+    <div class="header">
+        <h1>What to Eat Near {{venueRestaurants.venue.name}}</h1>
     </div>
-    <div class="rowContainer header">
+    <div class="rowContainer">
         <div class="breakfast">
             <h1>Breakfast</h1> {{#venueRestaurants.breakfast.data.results}}
-            <div class="rowContainer venue">
+            <div class="rowContainer restaurant">
                 <div class="name">{{name}}</div>
                 <div class="address">{{formatted_address}}</div>
                 <div class="rating">Rating: {{rating}}</div>
+                <div class="directions">
+                    <a href="https://www.google.com/maps/dir/?api=1&origin={{venueRestaurants.venue.lat}},{{venueRestaurants.venue.lng}}&destination={{name}}+{{formatted_address}}">Directions</a>
+                </div>
             </div>
             {{/venueRestaurants.breakfast.data.results}}
         </div>
         <div class="lunch">
-            <h1>Dinner</h1> {{#venueRestaurants.lunch.data.results}}
-            <div class="rowContainer venue">
+            <h1>Lunch</h1> {{#venueRestaurants.lunch.data.results}}
+            <div class="rowContainer restaurant">
                 <div class="name">{{name}}</div>
                 <div class="address">{{formatted_address}}</div>
                 <div class="rating">Rating: {{rating}}</div>
+                <div class="directions">
+                    <a href="https://www.google.com/maps/dir/?api=1&origin={{venueRestaurants.venue.lat}},{{venueRestaurants.venue.lng}}&destination={{name}}+{{formatted_address}}">Directions</a>
+                </div>
             </div>
             {{/venueRestaurants.lunch.data.results}}
         </div>
         <div class="dinner">
             <h1>Dinner</h1> {{#venueRestaurants.dinner.data.results}}
-            <div class="rowContainer venue">
+            <div class="rowContainer restaurant">
                 <div class="name">{{name}}</div>
                 <div class="address">{{formatted_address}}</div>
                 <div class="rating">Rating: {{rating}}</div>
+                <div class="directions">
+                    <a href="https://www.google.com/maps/dir/?api=1&origin={{venueRestaurants.venue.lat}},{{venueRestaurants.venue.lng}}&destination={{name}}+{{formatted_address}}">Directions</a>
+                </div>
             </div>
             {{/venueRestaurants.dinner.data.results}}
         </div>
         <div class="snacks">
-            <h1>Late Night Snacks</h1> {{#venueRestaurants.snacks.data.results}}
-            <div class="rowContainer venue">
+            <h1>Snacks</h1> {{#venueRestaurants.snacks.data.results}}
+            <div class="rowContainer restaurant">
                 <div class="name">{{name}}</div>
                 <div class="address">{{formatted_address}}</div>
                 <div class="rating">Rating: {{rating}}</div>
+                <div class="directions">
+                    <a href="https://www.google.com/maps/dir/?api=1&origin={{venueRestaurants.venue.lat}},{{venueRestaurants.venue.lng}}&destination={{name}}+{{formatted_address}}">Directions</a>
+                </div>
             </div>
             {{/venueRestaurants.snacks.data.results}}
         </div>
     </div>
-    <a href="/bands/profile">Back to Tour Dates</a>
+    <a class="backButton" href="/bands/profile">Back to Tour Dates</a>
 </body>
 
 </html>

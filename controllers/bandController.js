@@ -47,7 +47,6 @@ router.get('/profile', auth.restrict, (req, res) => {
             return Band.getGif()
         })
         .then((gif) => {
-            console.log(gif);
             bandInfo.gif = gif.data.image_url;
             res.render('bands/profile', { bandInfo });
         })

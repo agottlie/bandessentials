@@ -31,7 +31,6 @@ router.get('/:id', auth.restrict, (req, res) => {
         })
         .then(data => {
             venueRestaurants.snacks = data;
-            console.log(util.inspect(venueRestaurants, false, null));
             res.render('venues/show', { venueRestaurants });
         })
 });

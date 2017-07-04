@@ -7,20 +7,36 @@
     <title>Band Profile</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+    <link rel="shortcut icon" href="../../images/guitar.png" />
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
     <script src="https://unpkg.com/flatpickr"></script>
     <script src="../../js/jquery.js"></script>
     <script src="../../js/script.js"></script>
 </head>
 
 <body>
-    <div class="welcome">
+    <div class="header">
         <h1>Welcome to your profile, {{bandInfo.band.name}}</h1>
+        <ul>
+            <li class="add">
+                <a href="/dates/new">Add Tour Date</a>
+            </li>
+            <li class="editHeader">
+                <a href="/bands/edit">Change Band Name</a>
+            </li>
+            <li class="logout">
+                <a href="/bands/logout">Logout</a>
+            </li>
+        </ul>
     </div>
     <div class="tour_dates">
-        <div class="rowContainer header">
+        <div>
+            <h1 id="title">Tour Dates</h1>
+        </div>
+        <div class="rowContainer">
             <div>Date</div>
+            <div>Venue</div>
             <div class="location">Location</div>
-            <div class="venue">Venue</div>
             <div class="explore">More Info</div>
             <div class="edit">Edit Date</div>
             <div class="delete">Delete Date</div>
@@ -28,23 +44,17 @@
         {{#bandInfo.tour}}
         <div class="rowContainer tourDate">
             <div class="date">{{tour_date}}</div>
+            <div>{{name}}</div>
             <div class="location">{{address}}</div>
-            <div class="venue">{{name}}</div>
             <div class="explore"><a href="/venues/{{venue_id}}">Explore</a></div>
             <div class="edit"><a href="/dates/edit/{{id}}">Edit</a></div>
             <div class="delete"><a class="deleteTour" href="/dates/{{id}}" data-id="{{id}}">Delete</a></div>
         </div>
         {{/bandInfo.tour}}
     </div>
-    <a href="/dates/new">Add Tour Date</a>
-    <div class="edit">
-        <a href="/bands/edit">Change Band Name</a>
+    <div class="gif">
+        <h3>Bored on tour?  Check out this random <a href="{{bandInfo.gif}}">Metalocalpyse</a> gif!</h3>
     </div>
-    <div class="logout">
-        <a href="/bands/logout">Logout</a>
-    </div>
-
-    <h3>Bored on tour?  Check out this <a href="{{bandInfo.gif}}">tour life gif</a>!</h3>
 </body>
 
 </html>
