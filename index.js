@@ -8,7 +8,7 @@ const mustacheExpress = require('mustache-express');
 require('dotenv').config()
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');

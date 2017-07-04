@@ -1,12 +1,5 @@
 pgp = require('pg-promise')();
 
-const cn = {
-    host: 'localhost',
-    port: 5432,
-    database: 'bandessentials',
-    user: 'andrewgottlieb'
-};
-
-const db = pgp(cn);
+var db = pgp(process.env.DATABASE_URL || 'postgres://andrewgottlieb@localhost:5432/bandessentials');
 
 module.exports = db;
