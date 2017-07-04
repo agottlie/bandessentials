@@ -8,16 +8,17 @@ const auth = require('../services/auth');
 const util = require('util');
 const venueData = {};
 
-//RENDER NEW DATE PAGE
+//renders the "add a tour date" page
 router.get('/new', auth.restrict, (req, res) => {
     res.render('dates/new', { id: req.user.id });
 });
 
-//RENDER EDIT DATE PAGE
+//renders the "edit tour date" page
 router.get('/edit/:id', auth.restrict, (req, res) => {
     const tour = {};
     const id = req.params.id;
 
+    //finds the date in the tours db, as well as the current venue associated with that date
     Tour
         .findDate(id)
         .then((data) => {
@@ -31,24 +32,30 @@ router.get('/edit/:id', auth.restrict, (req, res) => {
         });
 });
 
-//RENDER SEARCH RESULTS PAGE
+//render the search results page
 router.get('/search', auth.restrict, (req, res) => {
     res.render('dates/search', venueData);
 })
 
-//SEARCH FOR RESULTS THROUGH API
+//allows for an API search by pulling in all relevant details from the search form as parameters
 router.get('/search/:date/:name/:city/:state/:id', auth.restrict, (req, res) => {
     const query = req.params.name + "+" + req.params.city + "+" + req.params.state;
 
+    //dvenue id
     venueData.id = req.user.id;
+    //tour date id
     venueData.date_id = req.params.id;
+
     venueData.date = req.params.date;
+
+    //passes along if the user came from the "edit date" or "new date" page
     if (req.params.id === "null") {
         venueData.link = "new";
     } else {
         venueData.link = "edit/" + req.params.id;
     }
 
+    //calls the Google Place API and then renders the results page with all results
     VenueAPI
         .getVenue(query)
         .then((data) => {
@@ -60,7 +67,7 @@ router.get('/search/:date/:name/:city/:state/:id', auth.restrict, (req, res) => 
     return venueData;
 })
 
-//ADD TOUR DATE
+//adds new tour date to db
 router.post('/', (req, res) => {
     const band_id = req.user.id,
         name = req.body.name,
@@ -69,6 +76,7 @@ router.post('/', (req, res) => {
         lat = req.body.lat,
         lng = req.body.lng;
 
+    //creates a new venue instance in the "venues" db and then creates a new tour date in the "tours" db referencing the venue id
     Venue
         .create(name, address, lat, lng)
         .then((data) => {
@@ -78,7 +86,7 @@ router.post('/', (req, res) => {
         .catch(err => console.log('ERROR: ', err));
 });
 
-//EDIT TOUR DATE
+//edits a tour date
 router.put('/', (req, res) => {
     const band_id = req.user.id,
         name = req.body.name,
@@ -88,7 +96,7 @@ router.put('/', (req, res) => {
         lng = req.body.lng,
         date_id = req.body.date_id;
 
-
+    //creates a new venue instance in the "venues" db and then updates a tour date in the "tours" db referencing the venue id
     Venue
         .create(name, address, lat, lng)
         .then((data) => {
@@ -98,10 +106,12 @@ router.put('/', (req, res) => {
         .catch(err => console.log('ERROR: ', err));
 });
 
-//DELETE TOUR DATE
+
+//deletes a tour date from the db
 router.delete('/:id', (req, res) => {
     const id = parseInt(req.params.id);
 
+    //searches the "tours" db for the id and then deletes that entry
     Tour
         .destroy(id)
         .then((data) => {

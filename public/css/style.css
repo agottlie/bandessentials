@@ -4,46 +4,10 @@ body {
     background-color: ghostwhite;
 }
 
-.rowContainer,
-.results {
-    display: flex;
-    flex-direction: row;
-}
-
-.rowContainer>div,
-.results>div {
-    margin: 20px;
-    width: 100%;
-}
-
-.header {
-    background-color: black;
-    color: white;
-}
-
 h1 {
     margin: 0;
     text-align: center;
     padding: 20px 0;
-}
-
-.tourDate, .venue {
-    border: 1px solid black;
-    margin: -1px 0;
-}
-
-#title {
-    text-decoration: underline;
-}
-
-.tour_dates {
-    margin-bottom: 20px;
-}
-
-.gif {
-    position: relative;
-    float: right;
-    right: 30px;
 }
 
 ul {
@@ -61,6 +25,38 @@ a {
 li {
     display: inline-block;
     padding: 0 10px;
+}
+
+.rowContainer,
+.results {
+    display: flex;
+    flex-direction: row;
+}
+
+.rowContainer>div,
+.results>div {
+    margin: 20px;
+    width: 100%;
+}
+
+.header {
+    background-color: black;
+    color: white;
+}
+
+.tourDate, .venue {
+    border: 1px solid black;
+    margin: -1px 0;
+}
+
+.tour_dates {
+    margin-bottom: 20px;
+}
+
+.gif {
+    position: relative;
+    float: right;
+    right: 30px;
 }
 
 .editHeader {
@@ -88,4 +84,8 @@ li {
 .restaurant>div {
     margin: 5px;
     width: 95%;
+}
+
+#title {
+    text-decoration: underline;
 }

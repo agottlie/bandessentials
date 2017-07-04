@@ -1,8 +1,9 @@
 const axios = require('axios');
 
+//perform Google Places API call using the name, city, and state input by the user
 function getVenue(query) {
     const queryPromise = axios({
-        url: `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&key=AIzaSyBj9JiE74r9MuEaKriUaL9l4diyhD3dWpE`,
+        url: `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&key=${process.env.GOOGLE_ID}`,
         method: 'GET',
     })
 

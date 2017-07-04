@@ -1,11 +1,8 @@
-// passport
+//COPIED AND PASTED THIS PRETTY MUCH VERBATIM FROM WDI COURSE EXAMPLE
+
 const passport = require('passport');
-// We're going to need the User model
 const Band = require('../models/bands');
-// And we're going to need the Local Strategy for this kind of registration
 const LocalStrategy = require('passport-local').Strategy;
-// We'll also need bcrypt to authenticate uses without storing their
-// passoword _anywhere_...
 const bcrypt = require('bcryptjs');
 
 const passportInstance = passport.initialize();
@@ -20,15 +17,9 @@ function restrict(req, res, next) {
     }
 }
 
-// Given user information called "user", what do we want to serialize
-// to the session?
 passport.serializeUser((band, done) => {
     done(null, band);
 });
-
-// Given an object representing our user (obtained from the session),
-// how shall we define any other user information we'll need in our
-// routes, conveniently accessible as req.user in routes?
 
 passport.deserializeUser((bandObj, done) => {
     Band
@@ -93,5 +84,4 @@ passport.use(
         })
 );
 
-// export this stuff, hook up in the top index.js
 module.exports = { passportInstance, passportSession, restrict };

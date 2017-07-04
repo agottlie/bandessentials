@@ -7,10 +7,12 @@ const passport = require('passport');
 const auth = require('../services/auth');
 const util = require('util');
 
+//renders the venue page when the user wants to "Explore" a venue
 router.get('/:id', auth.restrict, (req, res) => {
     const id = req.params.id,
         venueRestaurants = {};
 
+    //searches for a venue and then uses the Google Places API to find restaurants nearby using the queries noted below
     Venue
         .findById(id)
         .then(venue => {

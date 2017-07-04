@@ -5,6 +5,8 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const mustacheExpress = require('mustache-express');
 
+require('dotenv').config()
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -34,10 +36,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
+//controller routes
 app.use('/bands', require('./controllers/bandController'));
 app.use('/dates', require('./controllers/dateController'));
 app.use('/venues', require('./controllers/venueController'));
 
+//renders the landing page
 app.get('/', (req, res) => {
     res.render('index');
 });

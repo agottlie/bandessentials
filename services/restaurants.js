@@ -1,11 +1,12 @@
 const axios = require('axios');
 
+//perform Google Places API call using the venue's lat & lng, and performing a query based on meal
 function getRestaurant(venue, food) {
     const lat = venue.lat,
         lng = venue.lng;
 
     const queryPromise = axios({
-        url: `https://maps.googleapis.com/maps/api/place/textsearch/json?location=${lat},${lng}&radius=500&type=restaurant&query=${food}&key=AIzaSyCut-L_vs6oH3mQJ7hW8r827qpD8f1E6h4AIzaSyBj9JiE74r9MuEaKriUaL9l4diyhD3dWpE`,
+        url: `https://maps.googleapis.com/maps/api/place/textsearch/json?location=${lat},${lng}&radius=500&type=restaurant&query=${food}&key=${process.env.GOOGLE_ID}`,
         method: 'GET'
     })
 

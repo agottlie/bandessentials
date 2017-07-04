@@ -24,8 +24,7 @@ $(() => {
         $('.date').eq(i).text(month[date.getMonth()] + " " + date.getDate());
     }
 
-
-    //TAKE INPUTS FROM NEW TOUR DATE PAGE AND GO TO SEARCH
+    //takes inputs from "Add tour date" page and returns search results when the form is submitted
     $('.new-date-form').on('submit', (e) => {
         e.preventDefault();
 
@@ -35,6 +34,7 @@ $(() => {
             state = $('.tour-state-input').val(),
             id = null;
 
+        //users the variables as parameters as a way to pass them through a GET call
         $.ajax({
             method: 'GET',
             url: `/dates/search/${date}/${name}/${city}/${state}/${id}`,
@@ -47,7 +47,7 @@ $(() => {
         });
     });
 
-    //UPDATE TOUR DATE
+    //takes inputs from "Edit tour date" page and returns search results when the form is submitted
     $('.edit-date-form').on('submit', (e) => {
         e.preventDefault();
 
@@ -57,6 +57,7 @@ $(() => {
             state = $('.tour-state-edit').val(),
             id = $('.search').data('id');
 
+        //users the variables as parameters as a way to pass them through a GET call
         $.ajax({
             method: 'GET',
             url: `/dates/search/${date}/${name}/${city}/${state}/${id}`,
@@ -70,7 +71,7 @@ $(() => {
     });
 
 
-    //DELETE TOUR DATE
+    //deletes a tour date when the "Delete Date" button is clicked
     $('.deleteTour').on('click', (e) => {
         e.preventDefault();
 
@@ -88,7 +89,7 @@ $(() => {
         });
     })
 
-    //EDIT BAND NAME
+    //updates the user's band name when the form is submitted
     $('.edit-band-form').on('submit', (e) => {
         e.preventDefault();
 
@@ -114,10 +115,11 @@ $(() => {
     });
 
 
-    //ADD NEW TOUR DATE
+    //adds or edits a new tour date when the "Add Date" button is clicked
     $('.select').on('click', (e) => {
         e.preventDefault();
 
+        //uses the data attribute to pass through info on the specific entry clicked
         const name = $(e.target).data('name'),
             address = $(e.target).data('address'),
             lat = $(e.target).data('lat'),
@@ -136,11 +138,9 @@ $(() => {
             date_id: date_id
         }
 
-        console.log(date_id);
-        console.log(typeof(date_id));
-
+        //checks if the user is coming from the "Add" or "Edit" page.
+        //date_id will be null if this is a new date, and will be a value > 0 if editing a current page
         if (date_id > 0) {
-            console.log("RIGHT PATH");
             $.ajax({
                 method: 'PUT',
                 url: '/dates/',
